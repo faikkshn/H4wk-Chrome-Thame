@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H4WK Toolkit</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo">
+        <img src="../icons/icon48.png" alt="H4WK">
+        <div class="header-text">
+          <h1>H4WK</h1>
+          <span class="subtitle">SPACE HACKER TOOLKIT</span>
+        </div>
+      </div>
+      <div class="status-indicator" id="status"></div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs">
+      <button class="tab active" data-tab="tools">Tools</button>
+      <button class="tab" data-tab="encoding">Encoding</button>
+      <button class="tab" data-tab="security">Security</button>
+      <button class="tab" data-tab="info">Page Info</button>
+    </nav>
+
+    <!-- Tools Tab -->
+    <div id="tools-tab" class="tab-content active">
+      <div class="tool-grid">
+        <button class="tool-btn" data-action="json-format">
+          <span class="icon">{ }</span>
+          <span class="label">JSON Format</span>
+        </button>
+        <button class="tool-btn" data-action="color-picker">
+          <span class="icon">🎨</span>
+          <span class="label">Color Picker</span>
+        </button>
+        <button class="tool-btn" data-action="regex-tester">
+          <span class="icon">.*</span>
+          <span class="label">Regex Test</span>
+        </button>
+        <button class="tool-btn" data-action="notes">
+          <span class="icon">📝</span>
+          <span class="label">Quick Notes</span>
+        </button>
+        <button class="tool-btn" data-action="screenshot">
+          <span class="icon">📷</span>
+          <span class="label">Screenshot</span>
+        </button>
+        <button class="tool-btn" data-action="console">
+          <span class="icon">⚡</span>
+          <span class="label">Console</span>
+        </button>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="quick-actions">
+        <h3>Quick Actions</h3>
+        <button class="action-btn" id="clear-cookies">Clear Cookies</button>
+        <button class="action-btn" id="clear-storage">Clear Storage</button>
+        <button class="action-btn" id="reload-nocache">Hard Reload</button>
+      </div>
+    </div>
+
+    <!-- Encoding Tab -->
+    <div id="encoding-tab" class="tab-content">
+      <div class="encoder-section">
+        <h3>Text Encoder/Decoder</h3>
+        <textarea id="input-text" placeholder="Enter text here..." rows="4"></textarea>
+
+        <div class="encoder-buttons">
+          <button class="encode-btn" data-type="base64-encode">Base64 Encode</button>
+          <button class="encode-btn" data-type="base64-decode">Base64 Decode</button>
+          <button class="encode-btn" data-type="url-encode">URL Encode</button>
+          <button class="encode-btn" data-type="url-decode">URL Decode</button>
+          <button class="encode-btn" data-type="hex-encode">Hex Encode</button>
+          <button class="encode-btn" data-type="hex-decode">Hex Decode</button>
+        </div>
+
+        <div class="output-section">
+          <div class="output-header">
+            <h4>Output</h4>
+            <button class="copy-btn" id="copy-output">Copy</button>
+          </div>
+          <textarea id="output-text" placeholder="Output will appear here..." rows="4" readonly></textarea>
+        </div>
+      </div>
+    </div>
+
+    <!-- Security Tab -->
+    <div id="security-tab" class="tab-content">
+      <div class="security-section">
+        <h3>Hash Calculator</h3>
+        <textarea id="hash-input" placeholder="Enter text to hash..." rows="3"></textarea>
+
+        <div class="hash-buttons">
+          <button class="hash-btn" data-algo="md5">MD5</button>
+          <button class="hash-btn" data-algo="sha1">SHA-1</button>
+          <button class="hash-btn" data-algo="sha256">SHA-256</button>
+          <button class="hash-btn" data-algo="sha512">SHA-512</button>
+        </div>
+
+        <div class="hash-output">
+          <div class="output-header">
+            <h4 id="hash-algo-label">Hash Output</h4>
+            <button class="copy-btn" id="copy-hash">Copy</button>
+          </div>
+          <input type="text" id="hash-result" placeholder="Hash will appear here..." readonly>
+        </div>
+
+        <div class="security-tools">
+          <h3>Security Tools</h3>
+          <button class="tool-btn-full" id="check-headers">Check Security Headers</button>
+          <button class="tool-btn-full" id="view-cookies">View All Cookies</button>
+          <button class="tool-btn-full" id="view-storage">View Local Storage</button>
+          <button class="tool-btn-full" id="ssl-info">SSL Certificate Info</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Info Tab -->
+    <div id="info-tab" class="tab-content">
+      <div class="info-section">
+        <h3>Current Page Info</h3>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">URL:</span>
+            <span class="info-value" id="page-url">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Title:</span>
+            <span class="info-value" id="page-title">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Protocol:</span>
+            <span class="info-value" id="page-protocol">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Host:</span>
+            <span class="info-value" id="page-host">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Path:</span>
+            <span class="info-value" id="page-path">-</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Cookies:</span>
+            <span class="info-value" id="cookie-count">-</span>
+          </div>
+        </div>
+
+        <div class="page-actions">
+          <h3>Page Actions</h3>
+          <button class="action-btn" id="view-source">View Page Source</button>
+          <button class="action-btn" id="view-headers">View Response Headers</button>
+          <button class="action-btn" id="extract-links">Extract All Links</button>
+          <button class="action-btn" id="extract-images">Extract All Images</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <span class="version">v1.0.0</span>
+      <span class="author">Built by H4WK</span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# H4WK - ŞAHİN Space Hacker Theme 🦅
+# H4WK Space Hacker Toolkit 🦅
 
 <p align="center">
   <img src="logo.png" alt="H4WK Logo" width="300"/>
@@ -6,13 +6,13 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/version-1.0.0-00ffaa" alt="Version"/>
-  <img src="https://img.shields.io/badge/Chrome-Theme-00ffff" alt="Chrome"/>
+  <img src="https://img.shields.io/badge/Chrome-Extension-00ffff" alt="Chrome"/>
   <img src="https://img.shields.io/badge/license-MIT-6600ff" alt="License"/>
 </p>
 
-**Uzay Çağı ve Hacking Kültürünü Birleştiren Profesyonel Chrome Teması**
+**Developer & Security Toolkit + Space Hacker Theme**
 
-Yazılım geliştiriciler ve teknoloji meraklıları için özel olarak tasarlanmış, cyberpunk esintili, uzay temalı bir Chrome tarayıcı teması. Profesyonel H4WK logosu ile güçlendirilmiş!
+Yazılım geliştiriciler, güvenlik araştırmacıları ve hacker'lar için özel olarak tasarlanmış, cyberpunk esintili Chrome extension. Tema + Developer Tools + Security Tools tek bir pakette!
 
 ## 🎨 Tasarım Konsepti
 
@@ -24,13 +24,43 @@ Bu tema şu elementleri birleştirir:
 
 ## 🎯 Özellikler
 
-### Renk Paleti
-- **Arka Plan**: Derin uzay siyahı (#05050f - #1a0a28)
-- **Vurgu Renkleri**:
+### 🛠️ Developer Tools
+- **JSON Formatter**: Otomatik JSON formatlama ve görüntüleme
+- **Encoding/Decoding**: Base64, URL, Hex encode/decode
+- **Hash Calculator**: MD5, SHA-1, SHA-256, SHA-512
+- **Regex Tester**: Sayfa içinde regex test
+- **Color Picker**: Sayfa elementlerinden renk seç
+- **Quick Notes**: Hızlı not alma
+- **Screenshot Tool**: Ekran görüntüsü al
+- **Console Access**: Hızlı JavaScript çalıştır
+
+### 🔒 Security Tools
+- **Security Headers Check**: HTTP güvenlik header'larını kontrol et
+- **Cookie Manager**: Cookie görüntüle ve yönet
+- **Storage Viewer**: LocalStorage/SessionStorage görüntüle
+- **SSL Certificate Info**: SSL sertifika bilgileri
+- **Network Monitor**: XHR/Fetch isteklerini izle
+
+### 📊 Page Analysis
+- **Page Info**: URL, title, protocol, host bilgileri
+- **Link Extractor**: Tüm linkleri çıkar
+- **Image Extractor**: Tüm görselleri listele
+- **Form Analyzer**: Form yapısını analiz et
+- **Metadata Viewer**: Sayfa metadata'sını görüntüle
+
+### ⌨️ Keyboard Shortcuts
+- **Ctrl+Shift+H**: H4WK Toolkit'i aç
+- **Alt+H**: Console'da H4WK banner'ı göster
+- **Alt+J**: Sayfada JSON formatla
+- **Alt+C**: URL'i kopyala
+
+### 🎨 Tema Özellikleri
+- **Renk Paleti**:
   - Neon Yeşil (#00ffaa) - Birincil
   - Cyan (#00ffff) - İkincil
   - Mor (#6600ff) - Aksan
-- **Metin**: Parlak yeşil ve cyan tonları
+- **Uzay Temalı Arka Plan**: 1920x1080 nebula ve yıldızlar
+- **Neon Glow Efektler**: Cyberpunk tarzı parlama efektleri
 
 ### Görsel Elementler
 - **🦅 Profesyonel H4WK Logosu**: AI ile oluşturulmuş, gerçekçi logo
@@ -181,10 +211,10 @@ Bu projeyi geliştirmek isterseniz:
 
 ## 👨‍💻 Geliştirici
 
-**H4WK - ŞAHİN**
+**H4WK**
 
 - GitHub: [@faikkshn](https://github.com/faikkshn)
-- Tema Deposu: [H4wk-Chrome-Thame](https://github.com/faikkshn/H4wk-Chrome-Thame)
+- Extension Deposu: [H4wk-Chrome-Thame](https://github.com/faikkshn/H4wk-Chrome-Thame)
 
 ## 📄 Lisans
 
@@ -198,9 +228,9 @@ Bu proje MIT lisansı altında lisanslanmıştır. Detaylar için [LICENSE](LICE
 
 ---
 
-**⚡ Made with passion by H4WK - ŞAHİN**
+**⚡ Built by H4WK**
 
-*"Keskin bir bakışla kodun derinliklerine dalın" - H4WK*
+*"Sharp vision for deep code" - H4WK*
 
-🌌 Space Age • 💻 Hacker Culture • 🦅 Hawk Power
+🌌 Space Age • 💻 Hacker Culture • 🔒 Security Tools • 🦅 Developer Power
 

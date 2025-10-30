@@ -1,8 +1,63 @@
 {
   "manifest_version": 3,
-  "name": "H4WK - ŞAHİN Space Hacker Theme",
+  "name": "H4WK Space Hacker Toolkit",
   "version": "1.0.0",
-  "description": "Professional Chrome theme combining space age aesthetics with hacking culture. Designed by H4WK - ŞAHİN for developers and tech enthusiasts.",
+  "description": "Professional developer and security toolkit combining space age aesthetics with hacking culture. Built by H4WK for developers, hackers, and tech enthusiasts.",
+  "author": "H4WK",
+  "homepage_url": "https://github.com/faikkshn/H4wk-Chrome-Thame",
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    },
+    "default_title": "H4WK Toolkit"
+  },
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "tabs",
+    "scripting",
+    "cookies",
+    "webRequest"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+H",
+        "mac": "Command+Shift+H"
+      },
+      "description": "Open H4WK Toolkit"
+    }
+  },
+
   "theme": {
     "images": {
       "theme_ntp_background": "images/background.png"
@@ -40,12 +95,5 @@
       "ntp_background_repeat": "no-repeat",
       "ntp_logo_alternate": 1
     }
-  },
-  "icons": {
-    "16": "icons/icon16.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
-  },
-  "author": "H4WK - ŞAHİN",
-  "homepage_url": "https://github.com/faikkshn/H4wk-Chrome-Thame"
+  }
 }
