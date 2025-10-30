@@ -1,0 +1,185 @@
+╔══════════════════════════════════════════════════════════════════╗
+║           H4WK TOOLKIT - ÇOK BASİT KULLANIM REHBERİ             ║
+╚══════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────┐
+│  ADIM 1: EXTENSION'I YÜKLE                                       │
+└──────────────────────────────────────────────────────────────────┘
+
+1. Chrome aç
+2. Adres çubuğuna yaz:  chrome://extensions/
+3. SAĞ ÜST köşede "Developer mode" açık yap
+4. Sol üstte "Load unpacked" tıkla
+5. H4wk-Chrome-Thame klasörünü seç
+6. TAMAM!
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  ADIM 2: ARAÇLARA ERİŞ                                          │
+└──────────────────────────────────────────────────────────────────┘
+
+Extension yüklenince Chrome'un SAĞ ÜST köşesinde böyle bir ikon göreceksin:
+
+    Chrome Toolbar (sağ üst):
+    ┌─────────────────────────────────┐
+    │  [🏠] [⭐] [👤] [🦅]  [⋮]       │  ← H4WK ikonu burada!
+    └─────────────────────────────────┘
+                         ↑
+                    Buraya TIKLA!
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  ADIM 3: POPUP AÇILIR                                           │
+└──────────────────────────────────────────────────────────────────┘
+
+H4WK ikonuna tıklayınca böyle bir pencere açılır:
+
+    ┌────────────────────────────────────┐
+    │  🦅 H4WK                           │
+    │     SPACE HACKER TOOLKIT           │
+    ├────────────────────────────────────┤
+    │ TOOLS | ENCODING | SECURITY | INFO │  ← 4 sekme var
+    ├────────────────────────────────────┤
+    │                                    │
+    │  🛠️ Tools:                         │
+    │                                    │
+    │  [{ }]        [🎨]        [.*]     │
+    │ JSON Format  Color Pick  Regex     │
+    │                                    │
+    │  [📝]         [📷]        [⚡]     │
+    │  Notes     Screenshot   Console    │
+    │                                    │
+    │  Quick Actions:                    │
+    │  [Clear Cookies]                   │
+    │  [Clear Storage]                   │
+    │  [Hard Reload]                     │
+    │                                    │
+    └────────────────────────────────────┘
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  4 SEKME NEDİR?                                                  │
+└──────────────────────────────────────────────────────────────────┘
+
+1. TOOLS       → JSON, Color Picker, Screenshot, vb.
+2. ENCODING    → Base64, URL, Hex encode/decode
+3. SECURITY    → Hash, Cookies, Headers
+4. PAGE INFO   → URL, Links, Images bilgileri
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  ÖRNEK: JSON FORMATLA                                            │
+└──────────────────────────────────────────────────────────────────┘
+
+1. api.github.com adresine git
+2. Sağ üstte H4WK ikonuna tıkla
+3. "JSON Format" butonuna tıkla
+4. TAMAM! JSON formatlanır!
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  ÖRNEK: BASE64 ENCODE                                            │
+└──────────────────────────────────────────────────────────────────┘
+
+1. H4WK ikonuna tıkla
+2. "ENCODING" sekmesine tıkla
+3. Kutuya "hello world" yaz
+4. "Base64 Encode" butonuna tıkla
+5. Altta sonucu gör: aGVsbG8gd29ybGQ=
+6. "Copy" butonuna tıkla
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  ÖRNEK: HASH HESAPLA                                             │
+└──────────────────────────────────────────────────────────────────┘
+
+1. H4WK ikonuna tıkla
+2. "SECURITY" sekmesine tıkla
+3. Kutuya "password123" yaz
+4. "SHA-256" butonuna tıkla
+5. Hash görünür!
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  HIZLI ERİŞİM: KLAVYE                                           │
+└──────────────────────────────────────────────────────────────────┘
+
+Mouse kullanmadan:
+
+    Ctrl + Shift + H    →  Popup'ı aç
+
+    Alt + J             →  Sayfadaki JSON'u formatla
+
+    Alt + C             →  URL'i kopyala
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  HIZLI ERİŞİM: SAĞ TIK                                          │
+└──────────────────────────────────────────────────────────────────┘
+
+1. Herhangi bir metni FARE ile SEÇ
+2. SAĞ TIK
+3. "H4WK Toolkit" görürsün
+4. Alt menülerden birini seç:
+   - Encode/Decode → Base64 Encode
+   - Encode/Decode → URL Encode
+   - Hash → SHA-256
+   - Save to Quick Notes
+   - Search on GitHub
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  CONSOLE'DA KULLAN                                               │
+└──────────────────────────────────────────────────────────────────┘
+
+1. Herhangi bir sayfada F12 bas
+2. "Console" sekmesine git
+3. Yaz ve Enter bas:
+
+    H4WK.showBanner()
+
+4. Diğer komutlar:
+
+    H4WK.extractLinks()      → Tüm linkleri göster
+    H4WK.extractImages()     → Tüm görselleri göster
+    H4WK.getMetadata()       → Sayfa bilgileri
+    H4WK.darkMode()          → Dark mode aç/kapa
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  SORUN ÇÖZME                                                     │
+└──────────────────────────────────────────────────────────────────┘
+
+❌ İkon göremiyorum:
+   → Toolbar'da PUZZLE (🧩) ikonuna tıkla
+   → H4WK'ı bul
+   → Sağındaki PİN (📌) ikonuna tıkla
+   → Artık her zaman görünür!
+
+❌ Popup açılmıyor:
+   → chrome://extensions/ adresine git
+   → H4WK'ı bul
+   → "Enabled" olduğunu kontrol et
+
+❌ Tema renkleri yok:
+   → YENİ SEKME aç (Ctrl+T)
+   → Space arka planı göreceksin
+
+
+┌──────────────────────────────────────────────────────────────────┐
+│  ÖZETİN ÖZETİ                                                    │
+└──────────────────────────────────────────────────────────────────┘
+
+    ARAÇLARA ERİŞMEK İÇİN:
+
+    1. Chrome sağ üst → 🦅 H4WK ikonu → TIKLA
+
+    2. Veya klavye: Ctrl+Shift+H
+
+    3. Veya metin seç + sağ tık → H4WK Toolkit
+
+
+╔══════════════════════════════════════════════════════════════════╗
+║  🦅 H4WK TOOLKIT HER ZAMAN AKTİF!                                ║
+║  Sadece toolbar'daki ikona tıkla ve araçları kullan!            ║
+╚══════════════════════════════════════════════════════════════════╝
