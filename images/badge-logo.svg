@@ -1,0 +1,168 @@
+<svg width="440" height="280" viewBox="0 0 440 280" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="deepSpace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#05050f;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#0f0f23;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1a0a28;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="neonGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff00;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#00ffaa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ff88;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0099ff;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="purpleAccent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#aa00ff;stop-opacity:0.6" />
+      <stop offset="100%" style="stop-color:#6600ff;stop-opacity:0.6" />
+    </linearGradient>
+
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="strongGlow">
+      <feGaussianBlur stdDeviation="5" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="440" height="280" fill="url(#deepSpace)"/>
+
+  <!-- Nebula effect -->
+  <ellipse cx="100" cy="80" rx="150" ry="100" fill="url(#purpleAccent)" opacity="0.2" filter="url(#glow)"/>
+  <ellipse cx="340" cy="200" rx="120" ry="80" fill="#00ffaa" opacity="0.1" filter="url(#glow)"/>
+
+  <!-- Stars -->
+  <g opacity="0.8">
+    <circle cx="60" cy="40" r="1.5" fill="#ffffff"/>
+    <circle cx="120" cy="70" r="1" fill="#00ffaa"/>
+    <circle cx="180" cy="50" r="1.2" fill="#00ffff"/>
+    <circle cx="300" cy="60" r="1" fill="#ffffff"/>
+    <circle cx="360" cy="90" r="1.5" fill="#00ffaa"/>
+    <circle cx="80" cy="180" r="1.2" fill="#00ffff"/>
+    <circle cx="400" cy="240" r="1" fill="#ffffff"/>
+    <circle cx="50" cy="220" r="1.5" fill="#00ffaa"/>
+    <circle cx="380" cy="150" r="1.2" fill="#00ffff"/>
+  </g>
+
+  <!-- Main Icon (Large) -->
+  <g transform="translate(35, 30)">
+    <!-- Border circle -->
+    <circle cx="90" cy="110" r="88" fill="none" stroke="url(#neonCyan)" stroke-width="3" filter="url(#glow)"/>
+    <circle cx="90" cy="110" r="85" fill="rgba(10, 10, 25, 0.5)"/>
+
+    <!-- HAWK Icon (simplified for badge) -->
+    <g filter="url(#glow)">
+      <!-- Head -->
+      <path d="M 90 60 L 80 65 L 75 75 L 75 85 L 80 92 L 90 95 L 100 92 L 105 85 L 105 75 L 100 65 Z"
+            fill="url(#neonGreen)" opacity="0.9" stroke="#00ffaa" stroke-width="1"/>
+
+      <!-- Eye -->
+      <circle cx="83" cy="78" r="6" fill="#00ffff" filter="url(#strongGlow)"/>
+      <circle cx="83" cy="78" r="3" fill="#0a0a19"/>
+
+      <!-- Beak -->
+      <path d="M 90 60 L 85 56 L 87 62 Z" fill="#00ffff" opacity="0.95"/>
+
+      <!-- Body -->
+      <path d="M 80 92 L 75 110 L 75 130 L 80 145 L 90 150 L 100 145 L 105 130 L 105 110 L 100 92 Z"
+            fill="url(#neonGreen)" opacity="0.9" stroke="#00ffaa" stroke-width="1"/>
+
+      <!-- Circuit -->
+      <line x1="90" y1="95" x2="90" y2="145" stroke="#00ffff" stroke-width="2" opacity="0.6"/>
+      <circle cx="90" cy="110" r="5" fill="none" stroke="#00ffff" stroke-width="1.5" opacity="0.6"/>
+      <circle cx="90" cy="130" r="4" fill="none" stroke="#00ffff" stroke-width="1.5" opacity="0.6"/>
+
+      <!-- Wings -->
+      <ellipse cx="55" cy="115" rx="25" ry="15" fill="url(#neonCyan)" opacity="0.85" stroke="#00ffaa" stroke-width="1.5" transform="rotate(-20 55 115)"/>
+      <ellipse cx="125" cy="115" rx="25" ry="15" fill="url(#neonCyan)" opacity="0.85" stroke="#00ffaa" stroke-width="1.5" transform="rotate(20 125 115)"/>
+
+      <!-- Wing circuits -->
+      <line x1="75" y1="110" x2="50" y2="112" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+      <line x1="105" y1="110" x2="130" y2="112" stroke="#00ffff" stroke-width="1" opacity="0.5"/>
+
+      <!-- Tail -->
+      <path d="M 90 150 L 85 165 L 85 172 L 90 175 L 95 172 L 95 165 Z"
+            fill="url(#neonCyan)" opacity="0.85" stroke="#00ffaa" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- Text Section -->
+  <g filter="url(#glow)">
+    <!-- H4WK -->
+    <text x="240" y="100"
+          font-family="'Courier New', monospace"
+          font-size="64"
+          font-weight="bold"
+          fill="url(#neonGreen)"
+          letter-spacing="4">H4WK</text>
+
+    <!-- ŞAHİN -->
+    <text x="240" y="145"
+          font-family="'Courier New', monospace"
+          font-size="32"
+          font-weight="bold"
+          fill="url(#neonCyan)"
+          letter-spacing="6">ŞAHİN</text>
+
+    <!-- Subtitle -->
+    <text x="240" y="175"
+          font-family="'Courier New', monospace"
+          font-size="14"
+          fill="#00ffaa"
+          letter-spacing="1"
+          opacity="0.8">SPACE HACKER THEME</text>
+
+    <!-- Version -->
+    <text x="240" y="200"
+          font-family="'Courier New', monospace"
+          font-size="12"
+          fill="#00ffff"
+          letter-spacing="1"
+          opacity="0.7">v1.0.0 - Chrome Edition</text>
+  </g>
+
+  <!-- Bottom decorative elements -->
+  <g opacity="0.6">
+    <!-- Left line -->
+    <line x1="40" y1="240" x2="160" y2="240" stroke="url(#neonGreen)" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="40" cy="240" r="3" fill="#00ffaa" filter="url(#glow)"/>
+    <circle cx="160" cy="240" r="3" fill="#00ffaa" filter="url(#glow)"/>
+
+    <!-- Right line -->
+    <line x1="280" y1="240" x2="400" y2="240" stroke="url(#neonGreen)" stroke-width="2" filter="url(#glow)"/>
+    <circle cx="280" cy="240" r="3" fill="#00ffaa" filter="url(#glow)"/>
+    <circle cx="400" cy="240" r="3" fill="#00ffaa" filter="url(#glow)"/>
+  </g>
+
+  <!-- Bottom text -->
+  <text x="220" y="265"
+        font-family="'Courier New', monospace"
+        font-size="10"
+        fill="#00ffaa"
+        text-anchor="middle"
+        opacity="0.5">🌌 SPACE AGE • 💻 HACKER CULTURE • 🦅 HAWK POWER</text>
+
+  <!-- HUD Corners -->
+  <g stroke="#00ffaa" stroke-width="2" fill="none" opacity="0.5">
+    <path d="M 10 30 L 10 10 L 30 10"/>
+    <path d="M 410 10 L 430 10 L 430 30"/>
+    <path d="M 10 250 L 10 270 L 30 270"/>
+    <path d="M 430 250 L 430 270 L 410 270"/>
+  </g>
+</svg>

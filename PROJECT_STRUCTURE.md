@@ -14,13 +14,18 @@ H4wk-Chrome-Thame/
 ├── 📄 PROJECT_STRUCTURE.md       # Bu dosya
 │
 ├── 📁 icons/                     # Tema ikonları
-│   ├── 🎨 icon.svg              # Ana logo (SVG formatında)
-│   ├── 🖼️ icon16.png            # 16x16 px icon (oluşturulacak)
-│   ├── 🖼️ icon48.png            # 48x48 px icon (oluşturulacak)
-│   └── 🖼️ icon128.png           # 128x128 px icon (oluşturulacak)
+│   ├── 🎨 icon.svg              # Ana logo (128x128 master)
+│   ├── 🎨 icon16.svg            # 16x16 optimize edilmiş SVG
+│   ├── 🎨 icon48.svg            # 48x48 optimize edilmiş SVG
+│   ├── 🎨 icon128.svg           # 128x128 detaylı SVG
+│   ├── 🖼️ icon16.png            # 16x16 px icon (SVG'den oluşturulacak)
+│   ├── 🖼️ icon48.png            # 48x48 px icon (SVG'den oluşturulacak)
+│   └── 🖼️ icon128.png           # 128x128 px icon (SVG'den oluşturulacak)
 │
 ├── 📁 images/                    # Arka plan ve diğer görseller
-│   └── 🎨 background.svg        # Uzay temalı arka plan görseli
+│   ├── 🎨 background.svg        # Uzay temalı arka plan görseli (1920x1080)
+│   ├── 🎨 badge-logo.svg        # Promotional badge (440x280)
+│   └── 🎨 promo-tile-1280x800.svg  # Chrome Web Store promo tile
 │
 └── 📁 tools/                     # Yardımcı araçlar
     └── 📄 svg-to-png-converter.html  # SVG'den PNG'ye dönüştürücü
@@ -79,28 +84,69 @@ H4wk-Chrome-Thame/
 
 ### 📁 icons/ Dizini
 
-Bu dizin tema ikonlarını içerir.
+Bu dizin tema ikonlarını içerir. Her boyut için özel olarak optimize edilmiş SVG dosyaları mevcuttur.
 
-#### icon.svg
+#### icon.svg (Master Logo)
 - **Format:** SVG (Scalable Vector Graphics)
 - **Boyut:** 128x128 viewBox
+- **Detay Seviyesi:** Maksimum (icon128.svg ile aynı)
 - **İçerik:**
-  - H4WK logosu
-  - Şahin silüeti
-  - Devre şemaları
-  - Neon efektler
-  - Uzay elementleri
-- **Kullanım:** PNG dönüştürme için kaynak dosya
+  - Detaylı H4WK şahin logosu
+  - Parlayan cyan göz efekti
+  - Animasyonlu scan line
+  - Geometrik kanatlar ve kuyruk
+  - Circuit pattern detayları
+  - HUD köşe braketleri
+  - Neon glow filtreler
+- **Kullanım:** Ana kaynak dosya, 128x128 PNG için
+
+#### icon16.svg
+- **Boyut:** 16x16 viewBox
+- **Detay Seviyesi:** Minimal
+- **Optimizasyon:** Küçük boyutta görünürlük için basitleştirilmiş
+- **İçerik:**
+  - Basit şahin silueti
+  - Tek göz noktası
+  - Temel kanat ve kuyruk
+  - Minimal circuit line
+- **Kullanım:** 16x16 PNG için (tarayıcı toolbar'da)
+
+#### icon48.svg
+- **Boyut:** 48x48 viewBox
+- **Detay Seviyesi:** Orta
+- **Optimizasyon:** Orta boyutta net görünüm
+- **İçerik:**
+  - Detaylı şahin baş ve gövde
+  - Göz ve gaga detayı
+  - Stilize kanatlar
+  - Circuit öğeleri
+  - HUD köşe işaretleri
+- **Kullanım:** 48x48 PNG için (uzantı yönetimi)
+
+#### icon128.svg
+- **Boyut:** 128x128 viewBox
+- **Detay Seviyesi:** Maksimum
+- **Optimizasyon:** Tam detay ve animasyon
+- **İçerik:**
+  - Tam detaylı H4WK logosu
+  - Animasyonlu twinkle yıldızlar
+  - Parlayan göz efekti
+  - Detaylı kanat yapısı
+  - Circuit pattern ve node'lar
+  - HUD braketleri
+  - Scan line animasyonu
+- **Kullanım:** 128x128 PNG için (Chrome Web Store)
 
 #### icon16.png, icon48.png, icon128.png
 - **Format:** PNG
-- **Şeffaflık:** Evet
+- **Şeffaflık:** Tam (alpha channel)
 - **Kullanım:** Chrome uzantı ikonları
-- **Not:** SVG'den dönüştürülmesi gerekir
-- **Gerekli Boyutlar:**
-  - 16x16 px: Uzantı listesinde küçük ikon
+- **Kaynak:** İlgili SVG dosyalarından dönüştürülür
+- **Gereklilik:** ⭐⭐⭐⭐⭐ Chrome teması için zorunlu
+- **Boyut Kullanımları:**
+  - 16x16 px: Toolbar ve uzantı listesi
   - 48x48 px: Uzantı yönetimi sayfası
-  - 128x128 px: Chrome Web Store ve yükleme
+  - 128x128 px: Chrome Web Store ve yükleme ekranı
 
 ### 📁 images/ Dizini
 
@@ -108,17 +154,65 @@ Bu dizin arka plan ve diğer görsel varlıkları içerir.
 
 #### background.svg
 - **Format:** SVG
-- **Boyut:** 1920x1080 px
+- **Boyut:** 1920x1080 px (Full HD)
+- **Dosya Tipi:** Arka plan görseli
 - **İçerik:**
-  - Derin uzay arka planı
+  - Derin uzay gradyan arka planı
+  - Mor ve cyan nebula efektleri
+  - Animasyonlu yıldız alanları (50+ yıldız)
+  - Matrix tarzı kod öğeleri
+  - Circuit pattern overlay
+  - H4WK logosu watermark (merkez)
+  - ŞAHİN yazısı
+  - HUD köşe braketleri
+  - Scan line animasyonu
+  - Durum çubuğu (alt)
+- **Kullanım:** New Tab Page arka planı (opsiyonel, PNG'ye dönüştürülerek)
+- **Optimizasyon:** Büyük ekranlar için optimize edilmiş
+
+#### badge-logo.svg
+- **Format:** SVG
+- **Boyut:** 440x280 px
+- **Dosya Tipi:** Promotional badge
+- **İçerik:**
+  - Sol taraf: Büyük H4WK logosu (180x180 circle)
+  - Sağ taraf: H4WK ve ŞAHİN yazıları
+  - Alt başlık: "SPACE HACKER THEME"
+  - Versiyon bilgisi: "v1.0.0 - Chrome Edition"
+  - Nebula efektleri arka planda
+  - Yıldız alanı
+  - Dekoratif çizgiler
+  - HUD köşe braketleri
+- **Kullanım:**
+  - GitHub README banner
+  - Sosyal medya paylaşımları
+  - Proje sunumları
+  - Marketing materyali
+- **Oran:** 11:7 (landscape)
+
+#### promo-tile-1280x800.svg
+- **Format:** SVG
+- **Boyut:** 1280x800 px (16:10)
+- **Dosya Tipi:** Chrome Web Store promotional tile
+- **İçerik:**
+  - Sol taraf: Büyük detaylı H4WK logosu (300x300)
+  - Sağ taraf: Başlık ve özellik listesi
+  - "H4WK" ana başlık (120pt)
+  - "ŞAHİN" alt başlık (56pt)
+  - 4 maddelik özellik listesi
+  - Version badge
+  - Uzay temalı arka plan
   - Nebula efektleri
-  - Yıldız alanları
-  - Matrix tarzı kod
-  - Devre desenleri
-  - H4WK logosu (watermark)
-  - HUD elementleri
-  - Animasyon efektleri
-- **Kullanım:** New Tab Page arka planı (opsiyonel)
+  - Animasyonlu yıldızlar
+  - Matrix kod elementleri
+  - Scan line animasyonu
+  - Alt bilgi çubuğu
+- **Kullanım:**
+  - Chrome Web Store listing
+  - Featured promotional image
+  - Extension store banner
+- **Standart:** Chrome Web Store promo tile boyutu
+- **PNG Versiyon:** Yayın için PNG'ye dönüştürülmeli
 
 ### 📁 tools/ Dizini
 

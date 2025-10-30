@@ -27,12 +27,18 @@ Bu tema şu elementleri birleştirir:
 - **Metin**: Parlak yeşil ve cyan tonları
 
 ### Görsel Elementler
-- Özel tasarım H4WK logosu
-- Uzay temalı arka plan görseli
-- Yıldız alanları ve nebula efektleri
-- Matrix tarzı kod öğeleri
-- HUD/UI köşe detayları
-- Tarama çizgisi animasyonu
+- **Özel Tasarım H4WK Logosu**: Her boyut için optimize edilmiş şahin logosu
+  - 128x128: Tam detaylı, animasyonlu versiyon
+  - 48x48: Orta detay seviyesi
+  - 16x16: Basitleştirilmiş ikon
+- **Uzay Temalı Arka Plan**: 1920x1080 full HD arka plan görseli
+- **Promotional Assets**: Badge logo ve Chrome Web Store için promo görselleri
+- **Yıldız Alanları**: Animasyonlu twinkle efektli yıldızlar
+- **Nebula Efektleri**: Mor ve cyan nebula ışıltıları
+- **Matrix Kod Öğeleri**: Binary ve hacker tarzı kod parçacıkları
+- **HUD/UI Detayları**: Köşe braketleri ve circuit node'ları
+- **Tarama Çizgisi**: Sürekli hareket eden scan line animasyonu
+- **Neon Glow Efektleri**: Tüm elementlerde parlama efektleri
 
 ## 📦 Kurulum
 
@@ -46,25 +52,35 @@ Bu tema şu elementleri birleştirir:
 
 2. **PNG İkonları Oluşturun** (Gerekli)
 
-   SVG dosyalarını PNG'ye dönüştürmek için aşağıdaki yöntemlerden birini kullanın:
+   Her boyut için optimize edilmiş SVG dosyaları hazır! Aşağıdaki yöntemlerden birini kullanarak PNG'ye dönüştürün:
 
-   **Yöntem A - Online Araç:**
-   - `icons/icon.svg` dosyasını [CloudConvert](https://cloudconvert.com/svg-to-png) gibi bir online araçta açın
-   - 16x16, 48x48 ve 128x128 boyutlarında PNG olarak dışa aktarın
-   - Dosyaları `icons/icon16.png`, `icons/icon48.png`, `icons/icon128.png` olarak kaydedin
-
-   **Yöntem B - Inkscape (Varsa):**
+   **🎯 Yöntem A - Web Dönüştürücü (En Kolay):**
    ```bash
-   inkscape icons/icon.svg --export-png=icons/icon16.png -w 16 -h 16
-   inkscape icons/icon.svg --export-png=icons/icon48.png -w 48 -h 48
-   inkscape icons/icon.svg --export-png=icons/icon128.png -w 128 -h 128
+   # Tarayıcınızda açın
+   open tools/svg-to-png-converter.html
+   ```
+   - İlgili SVG dosyasını yükleyin (`icon16.svg`, `icon48.svg`, `icon128.svg`)
+   - Otomatik olarak dönüştürülecek ve indirebileceksiniz
+   - Her dosyayı sırayla dönüştürün
+
+   **🔧 Yöntem B - Online Araçlar:**
+   - [CloudConvert](https://cloudconvert.com/svg-to-png) veya [Convertio](https://convertio.co/tr/svg-png/)
+   - `icons/icon16.svg` → `icons/icon16.png` (16x16)
+   - `icons/icon48.svg` → `icons/icon48.png` (48x48)
+   - `icons/icon128.svg` → `icons/icon128.png` (128x128)
+
+   **💻 Yöntem C - Komut Satırı (ImageMagick):**
+   ```bash
+   convert -background none icons/icon16.svg icons/icon16.png
+   convert -background none icons/icon48.svg icons/icon48.png
+   convert -background none icons/icon128.svg icons/icon128.png
    ```
 
-   **Yöntem C - ImageMagick:**
+   **🖌️ Yöntem D - Inkscape:**
    ```bash
-   convert -background none icons/icon.svg -resize 16x16 icons/icon16.png
-   convert -background none icons/icon.svg -resize 48x48 icons/icon48.png
-   convert -background none icons/icon.svg -resize 128x128 icons/icon128.png
+   inkscape icons/icon16.svg --export-png=icons/icon16.png -w 16 -h 16
+   inkscape icons/icon48.svg --export-png=icons/icon48.png -w 48 -h 48
+   inkscape icons/icon128.svg --export-png=icons/icon128.png -w 128 -h 128
    ```
 
 3. **Chrome'da Yükleyin**
