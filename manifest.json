@@ -41,7 +41,9 @@
     "tabs",
     "scripting",
     "cookies",
-    "webRequest"
+    "webRequest",
+    "contextMenus",
+    "notifications"
   ],
 
   "host_permissions": [
