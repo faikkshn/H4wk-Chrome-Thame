@@ -1,12 +1,18 @@
 # H4WK - ŞAHİN Space Hacker Theme 🦅
 
-![Version](https://img.shields.io/badge/version-1.0.0-00ffaa)
-![Chrome](https://img.shields.io/badge/Chrome-Theme-00ffff)
-![License](https://img.shields.io/badge/license-MIT-6600ff)
+<p align="center">
+  <img src="logo.png" alt="H4WK Logo" width="300"/>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/version-1.0.0-00ffaa" alt="Version"/>
+  <img src="https://img.shields.io/badge/Chrome-Theme-00ffff" alt="Chrome"/>
+  <img src="https://img.shields.io/badge/license-MIT-6600ff" alt="License"/>
+</p>
 
 **Uzay Çağı ve Hacking Kültürünü Birleştiren Profesyonel Chrome Teması**
 
-Yazılım geliştiriciler ve teknoloji meraklıları için özel olarak tasarlanmış, cyberpunk esintili, uzay temalı bir Chrome tarayıcı teması.
+Yazılım geliştiriciler ve teknoloji meraklıları için özel olarak tasarlanmış, cyberpunk esintili, uzay temalı bir Chrome tarayıcı teması. Profesyonel H4WK logosu ile güçlendirilmiş!
 
 ## 🎨 Tasarım Konsepti
 
@@ -27,10 +33,11 @@ Bu tema şu elementleri birleştirir:
 - **Metin**: Parlak yeşil ve cyan tonları
 
 ### Görsel Elementler
-- **Özel Tasarım H4WK Logosu**: Her boyut için optimize edilmiş şahin logosu
-  - 128x128: Tam detaylı, animasyonlu versiyon
-  - 48x48: Orta detay seviyesi
-  - 16x16: Basitleştirilmiş ikon
+- **🦅 Profesyonel H4WK Logosu**: AI ile oluşturulmuş, gerçekçi logo
+  - Neon yeşil ve cyan renkler
+  - Açık kanatlar, keskin detaylar
+  - Uzay arka planı, HUD braketleri
+  - Chrome icon boyutlarına optimize
 - **Uzay Temalı Arka Plan**: 1920x1080 full HD arka plan görseli
 - **Promotional Assets**: Badge logo ve Chrome Web Store için promo görselleri
 - **Yıldız Alanları**: Animasyonlu twinkle efektli yıldızlar
@@ -52,36 +59,32 @@ Bu tema şu elementleri birleştirir:
 
 2. **PNG İkonları Oluşturun** (Gerekli)
 
-   Her boyut için optimize edilmiş SVG dosyaları hazır! Aşağıdaki yöntemlerden birini kullanarak PNG'ye dönüştürün:
+   Profesyonel `logo.png` dosyasından Chrome icon boyutları oluşturun:
 
-   **🎯 Yöntem A - Web Dönüştürücü (En Kolay):**
+   **🦅 Yöntem A - Logo Resizer Aracı (En Kolay):**
    ```bash
    # Tarayıcınızda açın
-   open tools/svg-to-png-converter.html
+   open tools/logo-resizer.html
    ```
-   - İlgili SVG dosyasını yükleyin (`icon16.svg`, `icon48.svg`, `icon128.svg`)
-   - Otomatik olarak dönüştürülecek ve indirebileceksiniz
-   - Her dosyayı sırayla dönüştürün
+   - Sayfa otomatik olarak `logo.png`'yi yükleyecek
+   - 16x16, 48x48, 128x128 boyutlarında önizleme göreceksiniz
+   - "Tümünü İndir" butonuna tıklayın
+   - İndirilen dosyaları `icons/` klasörüne koyun
 
    **🔧 Yöntem B - Online Araçlar:**
-   - [CloudConvert](https://cloudconvert.com/svg-to-png) veya [Convertio](https://convertio.co/tr/svg-png/)
-   - `icons/icon16.svg` → `icons/icon16.png` (16x16)
-   - `icons/icon48.svg` → `icons/icon48.png` (48x48)
-   - `icons/icon128.svg` → `icons/icon128.png` (128x128)
+   - [iloveimg.com/resize-image](https://www.iloveimg.com/resize-image)
+   - `logo.png`'yi yükleyin
+   - Sırayla 16x16, 48x48, 128x128 boyutlarında resize edin
+   - `icons/icon16.png`, `icons/icon48.png`, `icons/icon128.png` olarak kaydedin
 
    **💻 Yöntem C - Komut Satırı (ImageMagick):**
    ```bash
-   convert -background none icons/icon16.svg icons/icon16.png
-   convert -background none icons/icon48.svg icons/icon48.png
-   convert -background none icons/icon128.svg icons/icon128.png
+   convert logo.png -resize 16x16 icons/icon16.png
+   convert logo.png -resize 48x48 icons/icon48.png
+   convert logo.png -resize 128x128 icons/icon128.png
    ```
 
-   **🖌️ Yöntem D - Inkscape:**
-   ```bash
-   inkscape icons/icon16.svg --export-png=icons/icon16.png -w 16 -h 16
-   inkscape icons/icon48.svg --export-png=icons/icon48.png -w 48 -h 48
-   inkscape icons/icon128.svg --export-png=icons/icon128.png -w 128 -h 128
-   ```
+   **📖 Detaylı Bilgi:** Tüm logo entegrasyon detayları için [LOGO_INTEGRATION.md](LOGO_INTEGRATION.md) dosyasına bakın.
 
 3. **Chrome'da Yükleyin**
    - Chrome'u açın ve `chrome://extensions/` adresine gidin
