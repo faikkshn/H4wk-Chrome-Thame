@@ -1,0 +1,32 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.bak
+
+# Node modules (if adding build tools later)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output (if adding build process)
+dist/
+build/
+
+# Chrome extension package
+*.crx
+*.pem
+
+# Backup PNG files (keeping originals)
+icons/*.backup.png

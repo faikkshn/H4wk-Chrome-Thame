@@ -1,0 +1,48 @@
+{
+  "manifest_version": 3,
+  "name": "H4WK - ŞAHİN Space Hacker Theme",
+  "version": "1.0.0",
+  "description": "Professional Chrome theme combining space age aesthetics with hacking culture. Designed by H4WK - ŞAHİN for developers and tech enthusiasts.",
+  "theme": {
+    "colors": {
+      "frame": [10, 10, 25],
+      "frame_inactive": [5, 5, 15],
+      "frame_incognito": [15, 0, 30],
+      "frame_incognito_inactive": [10, 0, 20],
+      "toolbar": [15, 15, 35],
+      "tab_text": [0, 255, 170],
+      "tab_background_text": [100, 200, 255],
+      "tab_background_text_inactive": [150, 150, 180],
+      "tab_background_text_incognito": [200, 100, 255],
+      "tab_background_text_incognito_inactive": [180, 80, 200],
+      "bookmark_text": [0, 255, 170],
+      "ntp_background": [5, 5, 15],
+      "ntp_text": [0, 255, 170],
+      "ntp_link": [100, 200, 255],
+      "ntp_header": [20, 20, 45],
+      "button_background": [30, 30, 60],
+      "omnibox_background": [20, 20, 40],
+      "omnibox_text": [0, 255, 170]
+    },
+    "tints": {
+      "buttons": [0.6, 0.5, 0.8],
+      "frame": [0.7, 0.6, 0.1],
+      "frame_inactive": [0.7, 0.6, 0.05],
+      "frame_incognito": [0.8, 0.8, 0.2],
+      "frame_incognito_inactive": [0.8, 0.8, 0.1],
+      "background_tab": [0.65, 0.5, 0.6]
+    },
+    "properties": {
+      "ntp_background_alignment": "center",
+      "ntp_background_repeat": "no-repeat",
+      "ntp_logo_alternate": 1
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "author": "H4WK - ŞAHİN",
+  "homepage_url": "https://github.com/faikkshn/H4wk-Chrome-Thame"
+}

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H4WK Theme Preview - Space Hacker Edition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(135deg, #05050f 0%, #0f0f23 50%, #1a0a28 100%);
+            color: #00ffaa;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated background stars */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        /* Scan line effect */
+        .scanline {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to bottom, transparent, #00ffaa, transparent);
+            opacity: 0.5;
+            animation: scan 5s linear infinite;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        @keyframes scan {
+            from { transform: translateY(0); }
+            to { transform: translateY(100vh); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            border: 2px solid #00ffaa;
+            border-radius: 10px;
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(10px);
+            margin-bottom: 40px;
+            box-shadow: 0 0 30px rgba(0, 255, 170, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00ffaa, #00ffff, #6600ff, #00ffaa);
+            border-radius: 10px;
+            z-index: -1;
+            animation: borderGlow 3s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 0 20px #00ffaa);
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px #00ffaa, 0 0 20px #00ffaa;
+            letter-spacing: 3px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #00ffff;
+            margin-bottom: 20px;
+            text-shadow: 0 0 5px #00ffff;
+        }
+
+        .version {
+            display: inline-block;
+            padding: 5px 15px;
+            border: 1px solid #00ffaa;
+            border-radius: 20px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        /* Sections */
+        .section {
+            background: rgba(20, 20, 40, 0.8);
+            border: 1px solid #00ffaa;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 255, 170, 0.2);
+        }
+
+        .section h2 {
+            color: #00ffff;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-shadow: 0 0 10px #00ffff;
+            border-bottom: 2px solid #00ffaa;
+            padding-bottom: 10px;
+        }
+
+        /* Color palette */
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .color-card {
+            border: 1px solid #00ffaa;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .color-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 255, 170, 0.4);
+        }
+
+        .color-sample {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .color-info {
+            padding: 15px;
+            background: rgba(10, 10, 25, 0.9);
+        }
+
+        .color-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #00ffff;
+        }
+
+        .color-value {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+
+        /* Features list */
+        .features {
+            list-style: none;
+            padding: 0;
+        }
+
+        .features li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(10, 10, 25, 0.6);
+            border-left: 3px solid #00ffaa;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        .features li:hover {
+            background: rgba(0, 255, 170, 0.1);
+            transform: translateX(5px);
+        }
+
+        .features li::before {
+            content: '▶ ';
+            color: #00ffff;
+            margin-right: 10px;
+        }
+
+        /* Installation steps */
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            counter-increment: step;
+            margin-bottom: 25px;
+            padding: 20px;
+            background: rgba(10, 10, 25, 0.6);
+            border-radius: 8px;
+            border-left: 4px solid #00ffaa;
+            position: relative;
+        }
+
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            left: -15px;
+            top: 20px;
+            width: 30px;
+            height: 30px;
+            background: #00ffaa;
+            color: #0a0a19;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            box-shadow: 0 0 10px #00ffaa;
+        }
+
+        .step h3 {
+            color: #00ffff;
+            margin-bottom: 10px;
+        }
+
+        code {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 2px 8px;
+            border-radius: 4px;
+            color: #00ffff;
+            font-family: 'Courier New', monospace;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #00ffaa;
+            margin: 10px 0;
+            overflow-x: auto;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 2px solid #00ffaa;
+            margin-top: 60px;
+        }
+
+        .signature {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+
+        /* HUD corners */
+        .hud-corner {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #00ffaa;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .hud-top-left {
+            top: 20px;
+            left: 20px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .hud-top-right {
+            top: 20px;
+            right: 20px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        .hud-bottom-left {
+            bottom: 20px;
+            left: 20px;
+            border-right: none;
+            border-top: none;
+        }
+
+        .hud-bottom-right {
+            bottom: 20px;
+            right: 20px;
+            border-left: none;
+            border-top: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .hud-corner {
+                width: 30px;
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Stars background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Scan line effect -->
+    <div class="scanline"></div>
+
+    <!-- HUD corners -->
+    <div class="hud-corner hud-top-left"></div>
+    <div class="hud-corner hud-top-right"></div>
+    <div class="hud-corner hud-bottom-left"></div>
+    <div class="hud-corner hud-bottom-right"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <img src="icons/icon.svg" alt="H4WK Logo" class="logo">
+            <h1>H4WK</h1>
+            <div class="subtitle">ŞAHİN SPACE HACKER THEME</div>
+            <div class="version">v1.0.0 - Space Age Edition</div>
+        </header>
+
+        <!-- Features Section -->
+        <section class="section">
+            <h2>✨ Özellikler</h2>
+            <ul class="features">
+                <li><strong>Uzay Çağı Estetiği:</strong> Derin uzay, nebula efektleri ve yıldız alanları</li>
+                <li><strong>Hacking Kültürü:</strong> Matrix tarzı kod elementleri ve devre şemaları</li>
+                <li><strong>Neon Cyberpunk Renkler:</strong> Elektrikli yeşil, cyan ve mor tonları</li>
+                <li><strong>H4WK İmzası:</strong> Özel tasarım şahin logosu</li>
+                <li><strong>Profesyonel Tasarım:</strong> Yazılım geliştiriciler için optimize edilmiş</li>
+                <li><strong>HUD Elementleri:</strong> Gelişmiş kullanıcı arayüzü detayları</li>
+            </ul>
+        </section>
+
+        <!-- Color Palette Section -->
+        <section class="section">
+            <h2>🎨 Renk Paleti</h2>
+            <div class="color-grid">
+                <div class="color-card">
+                    <div class="color-sample" style="background: #05050f; color: #00ffaa;">Derin Uzay</div>
+                    <div class="color-info">
+                        <div class="color-name">Derin Uzay</div>
+                        <div class="color-value">#05050f</div>
+                        <div class="color-value">RGB(5, 5, 15)</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: #0f0f23; color: #00ffaa;">Koyu Uzay</div>
+                    <div class="color-info">
+                        <div class="color-name">Koyu Uzay</div>
+                        <div class="color-value">#0f0f23</div>
+                        <div class="color-value">RGB(15, 15, 35)</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: #00ffaa; color: #000;">Neon Yeşil</div>
+                    <div class="color-info">
+                        <div class="color-name">Neon Yeşil</div>
+                        <div class="color-value">#00ffaa</div>
+                        <div class="color-value">RGB(0, 255, 170)</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: #00ffff; color: #000;">Cyan</div>
+                    <div class="color-info">
+                        <div class="color-name">Cyan</div>
+                        <div class="color-value">#00ffff</div>
+                        <div class="color-value">RGB(0, 255, 255)</div>
+                    </div>
+                </div>
+                <div class="color-card">
+                    <div class="color-sample" style="background: #6600ff; color: #fff;">Mor</div>
+                    <div class="color-info">
+                        <div class="color-name">Mor (Aksan)</div>
+                        <div class="color-value">#6600ff</div>
+                        <div class="color-value">RGB(102, 0, 255)</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section class="section">
+            <h2>📦 Kurulum</h2>
+            <div class="steps">
+                <div class="step">
+                    <h3>Depoyu İndirin</h3>
+                    <p>GitHub deposundan projeyi klonlayın:</p>
+                    <div class="code-block">
+                        <code>git clone https://github.com/faikkshn/H4wk-Chrome-Thame.git</code>
+                    </div>
+                </div>
+                <div class="step">
+                    <h3>PNG İkonları Oluşturun</h3>
+                    <p>SVG dosyalarını 16x16, 48x48 ve 128x128 boyutlarında PNG'ye dönüştürün.</p>
+                    <p>Online araçlar: CloudConvert, Convertio veya benzeri bir araç kullanabilirsiniz.</p>
+                </div>
+                <div class="step">
+                    <h3>Chrome Extensions Sayfasını Açın</h3>
+                    <p>Chrome'da <code>chrome://extensions/</code> adresine gidin.</p>
+                </div>
+                <div class="step">
+                    <h3>Developer Mode'u Aktifleştirin</h3>
+                    <p>Sağ üst köşedeki "Geliştirici modu" (Developer mode) seçeneğini açın.</p>
+                </div>
+                <div class="step">
+                    <h3>Temayı Yükleyin</h3>
+                    <p>"Paketlenmemiş öğe yükle" butonuna tıklayın ve proje klasörünü seçin.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Developer Info Section -->
+        <section class="section">
+            <h2>👨‍💻 Geliştirici</h2>
+            <p style="font-size: 1.1em; line-height: 1.8;">
+                <strong style="color: #00ffff;">H4WK - ŞAHİN</strong><br>
+                Uzay çağı ve hacking kültürünü birleştiren bu profesyonel Chrome teması,
+                yazılım geliştiriciler ve teknoloji meraklıları için özel olarak tasarlanmıştır.
+            </p>
+            <p style="margin-top: 20px;">
+                <strong>GitHub:</strong> <code>@faikkshn</code><br>
+                <strong>Proje:</strong> <code>H4wk-Chrome-Thame</code>
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>🌌 Space Age • 💻 Hacker Culture • 🦅 Hawk Power</p>
+            <div class="signature">⚡ Made with passion by H4WK - ŞAHİN ⚡</div>
+            <p style="margin-top: 20px; opacity: 0.7; font-style: italic;">
+                "Keskin bir bakışla kodun derinliklerine dalın"
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Generate random stars
+        const starsContainer = document.getElementById('stars');
+        const numStars = 100;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            star.style.opacity = Math.random() * 0.7 + 0.3;
+            starsContainer.appendChild(star);
+        }
+
+        // Console easter egg
+        console.log('%c🦅 H4WK - ŞAHİN THEME 🦅', 'color: #00ffaa; font-size: 20px; font-weight: bold;');
+        console.log('%cSpace Age • Hacker Culture', 'color: #00ffff; font-size: 14px;');
+        console.log('%cTheme Version: 1.0.0', 'color: #6600ff; font-size: 12px;');
+    </script>
+</body>
+</html>
