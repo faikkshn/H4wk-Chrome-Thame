@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>H4WK Background Creator</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: #0a0a19;
+            color: #00ffaa;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+        }
+        canvas {
+            border: 2px solid #00ffaa;
+            margin: 20px auto;
+            display: block;
+        }
+        button {
+            background: #00ffaa;
+            color: #0a0a19;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background: #00ffff;
+        }
+        h1 {
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff;
+        }
+        .info {
+            background: rgba(0, 255, 170, 0.1);
+            border: 1px solid #00ffaa;
+            padding: 15px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🦅 H4WK Background Creator</h1>
+    <div class="info">
+        <p>Chrome New Tab Page için background oluşturuluyor...</p>
+        <p><strong>Boyut:</strong> 1920x1080 (Full HD)</p>
+    </div>
+
+    <canvas id="bgCanvas" width="1920" height="1080"></canvas>
+
+    <button onclick="downloadBackground()">📥 Background İndir (background.png)</button>
+    <button onclick="location.reload()">🔄 Yenile</button>
+
+    <script>
+        const canvas = document.getElementById('bgCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Create deep space background
+        function createBackground() {
+            // Deep space gradient
+            const gradient = ctx.createLinearGradient(0, 0, 1920, 1080);
+            gradient.addColorStop(0, '#05050f');
+            gradient.addColorStop(0.5, '#0f0f23');
+            gradient.addColorStop(1, '#1a0a28');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1920, 1080);
+
+            // Nebula effects
+            ctx.globalAlpha = 0.3;
+
+            // Purple nebula
+            const nebula1 = ctx.createRadialGradient(576, 432, 0, 576, 432, 400);
+            nebula1.addColorStop(0, '#6600ff');
+            nebula1.addColorStop(1, 'transparent');
+            ctx.fillStyle = nebula1;
+            ctx.fillRect(0, 0, 1920, 1080);
+
+            // Cyan nebula
+            const nebula2 = ctx.createRadialGradient(1344, 648, 0, 1344, 648, 450);
+            nebula2.addColorStop(0, '#00ffaa');
+            nebula2.addColorStop(1, 'transparent');
+            ctx.fillStyle = nebula2;
+            ctx.fillRect(0, 0, 1920, 1080);
+
+            ctx.globalAlpha = 1.0;
+
+            // Stars
+            ctx.fillStyle = '#ffffff';
+            for (let i = 0; i < 200; i++) {
+                const x = Math.random() * 1920;
+                const y = Math.random() * 1080;
+                const size = Math.random() * 2 + 0.5;
+                const alpha = Math.random() * 0.5 + 0.3;
+
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            // Green stars
+            ctx.fillStyle = '#00ffaa';
+            for (let i = 0; i < 50; i++) {
+                const x = Math.random() * 1920;
+                const y = Math.random() * 1080;
+                const size = Math.random() * 1.5 + 0.5;
+                const alpha = Math.random() * 0.4 + 0.2;
+
+                ctx.globalAlpha = alpha;
+                ctx.beginPath();
+                ctx.arc(x, y, size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+
+            ctx.globalAlpha = 1.0;
+
+            // H4WK watermark in center
+            ctx.font = 'bold 120px "Courier New"';
+            ctx.fillStyle = 'rgba(0, 255, 170, 0.15)';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText('H4WK', 960, 540);
+
+            // Bottom status bar
+            ctx.font = '14px "Courier New"';
+            ctx.fillStyle = 'rgba(0, 255, 170, 0.5)';
+            ctx.textAlign = 'center';
+            ctx.fillText('[ H4WK THEME v1.0 - SPACE HACKER EDITION ]', 960, 1050);
+
+            // HUD corners
+            ctx.strokeStyle = 'rgba(0, 255, 170, 0.5)';
+            ctx.lineWidth = 3;
+
+            // Top-left
+            ctx.beginPath();
+            ctx.moveTo(60, 20);
+            ctx.lineTo(20, 20);
+            ctx.lineTo(20, 60);
+            ctx.stroke();
+
+            // Top-right
+            ctx.beginPath();
+            ctx.moveTo(1860, 20);
+            ctx.lineTo(1900, 20);
+            ctx.lineTo(1900, 60);
+            ctx.stroke();
+
+            // Bottom-left
+            ctx.beginPath();
+            ctx.moveTo(20, 1020);
+            ctx.lineTo(20, 1060);
+            ctx.lineTo(60, 1060);
+            ctx.stroke();
+
+            // Bottom-right
+            ctx.beginPath();
+            ctx.moveTo(1900, 1020);
+            ctx.lineTo(1900, 1060);
+            ctx.lineTo(1860, 1060);
+            ctx.stroke();
+        }
+
+        function downloadBackground() {
+            canvas.toBlob(function(blob) {
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'background.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                alert('✅ background.png indirildi!\n\nDosyayı images/ klasörüne koyun.');
+            }, 'image/png');
+        }
+
+        // Create background on load
+        createBackground();
+        console.log('%c🦅 H4WK Background Creator', 'color: #00ffaa; font-size: 20px; font-weight: bold;');
+    </script>
+</body>
+</html>
