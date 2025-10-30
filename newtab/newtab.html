@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>H4WK - New Tab</title>
+  <link rel="stylesheet" href="newtab.css">
+</head>
+<body>
+  <!-- Space Background -->
+  <div class="space-bg"></div>
+
+  <!-- H4WK Logo -->
+  <div class="logo-container">
+    <img src="../icons/icon128.png" alt="H4WK Logo" class="logo">
+    <h1 class="title">H4WK</h1>
+    <p class="subtitle">SPACE HACKER TOOLKIT</p>
+  </div>
+
+  <!-- Quick Access -->
+  <div class="quick-access">
+    <button class="quick-btn" id="open-toolkit">
+      <span class="icon">🛠️</span>
+      <span>Open Toolkit</span>
+    </button>
+    <button class="quick-btn" id="open-console">
+      <span class="icon">⚡</span>
+      <span>Developer Console</span>
+    </button>
+    <button class="quick-btn" id="open-github">
+      <span class="icon">🐙</span>
+      <span>GitHub</span>
+    </button>
+    <button class="quick-btn" id="open-stackoverflow">
+      <span class="icon">📚</span>
+      <span>Stack Overflow</span>
+    </button>
+  </div>
+
+  <!-- Clock -->
+  <div class="clock-container">
+    <div class="time" id="time">00:00:00</div>
+    <div class="date" id="date">Loading...</div>
+  </div>
+
+  <!-- Quick Search -->
+  <div class="search-container">
+    <input type="text" id="search-input" placeholder="Search Google or enter URL..." autocomplete="off">
+    <div class="search-buttons">
+      <button id="search-google">Google Search</button>
+      <button id="search-github">GitHub Search</button>
+    </div>
+  </div>
+
+  <!-- Shortcuts -->
+  <div class="shortcuts-container">
+    <h3>Keyboard Shortcuts</h3>
+    <div class="shortcut-list">
+      <div class="shortcut-item">
+        <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>
+        <span>Open H4WK Toolkit</span>
+      </div>
+      <div class="shortcut-item">
+        <kbd>Alt</kbd> + <kbd>J</kbd>
+        <span>Format JSON</span>
+      </div>
+      <div class="shortcut-item">
+        <kbd>Alt</kbd> + <kbd>C</kbd>
+        <span>Copy URL</span>
+      </div>
+      <div class="shortcut-item">
+        <kbd>F12</kbd>
+        <span>Developer Console</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <span>H4WK Space Hacker Toolkit v1.0.0</span>
+    <span class="divider">•</span>
+    <span>Press Ctrl+Shift+H for tools</span>
+  </footer>
+
+  <script src="newtab.js"></script>
+</body>
+</html>
