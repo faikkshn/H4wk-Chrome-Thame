@@ -20,25 +20,82 @@ document.querySelectorAll('.tab').forEach(tab => {
 // Initialize page info on load
 chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
   if (tabs[0]) {
-    const url = new URL(tabs[0].url);
-    document.getElementById('page-url').textContent = tabs[0].url;
-    document.getElementById('page-title').textContent = tabs[0].title;
-    document.getElementById('page-protocol').textContent = url.protocol;
-    document.getElementById('page-host').textContent = url.host;
-    document.getElementById('page-path').textContent = url.pathname;
+    const tabUrl = tabs[0].url;
 
-    // Get cookie count
-    chrome.cookies.getAll({url: tabs[0].url}, (cookies) => {
-      document.getElementById('cookie-count').textContent = cookies.length;
-    });
+    // Check if it's a chrome:// or other restricted URL
+    if (tabUrl.startsWith('chrome://') || tabUrl.startsWith('chrome-extension://') || tabUrl.startsWith('edge://')) {
+      document.getElementById('page-url').textContent = tabUrl;
+      document.getElementById('page-title').textContent = tabs[0].title;
+      document.getElementById('page-protocol').textContent = 'Restricted';
+      document.getElementById('page-host').textContent = 'System Page';
+      document.getElementById('page-path').textContent = 'N/A';
+      document.getElementById('cookie-count').textContent = 'N/A';
+      return;
+    }
+
+    try {
+      const url = new URL(tabUrl);
+      document.getElementById('page-url').textContent = tabUrl;
+      document.getElementById('page-title').textContent = tabs[0].title;
+      document.getElementById('page-protocol').textContent = url.protocol;
+      document.getElementById('page-host').textContent = url.host;
+      document.getElementById('page-path').textContent = url.pathname;
+
+      // Get cookie count (only for accessible URLs)
+      chrome.cookies.getAll({url: tabUrl}, (cookies) => {
+        document.getElementById('cookie-count').textContent = cookies ? cookies.length : 0;
+      });
+    } catch (e) {
+      // If URL parsing fails, show error gracefully
+      document.getElementById('page-url').textContent = tabUrl;
+      document.getElementById('page-title').textContent = tabs[0].title;
+      document.getElementById('page-protocol').textContent = 'Unknown';
+      document.getElementById('page-host').textContent = 'Cannot parse';
+      document.getElementById('page-path').textContent = 'N/A';
+      document.getElementById('cookie-count').textContent = 'N/A';
+    }
   }
 });
 
 // ==================== TOOLS TAB ====================
 
+// Helper: Check if URL is restricted
+function isRestrictedUrl(url) {
+  return url.startsWith('chrome://') ||
+         url.startsWith('chrome-extension://') ||
+         url.startsWith('edge://') ||
+         url.startsWith('about:');
+}
+
+// Helper: Safe script execution
+async function safeExecuteScript(func, args = []) {
+  const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+
+  if (isRestrictedUrl(tab.url)) {
+    alert('⚠️ Cannot access system pages\n\nThis tool cannot run on:\n• chrome:// pages\n• chrome-extension:// pages\n• edge:// pages\n\nPlease navigate to a regular website first.');
+    return null;
+  }
+
+  try {
+    return await chrome.scripting.executeScript({
+      target: {tabId: tab.id},
+      func: func,
+      args: args
+    });
+  } catch (e) {
+    alert('Error: ' + e.message);
+    return null;
+  }
+}
+
 // JSON Formatter
 document.querySelector('[data-action="json-format"]').addEventListener('click', async () => {
   const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+
+  if (isRestrictedUrl(tab.url)) {
+    alert('Cannot access system pages (chrome://, edge://, etc.)');
+    return;
+  }
 
   chrome.scripting.executeScript({
     target: {tabId: tab.id},
@@ -61,6 +118,11 @@ document.querySelector('[data-action="json-format"]').addEventListener('click', 
 // Color Picker
 document.querySelector('[data-action="color-picker"]').addEventListener('click', async () => {
   const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+
+  if (isRestrictedUrl(tab.url)) {
+    alert('Cannot access system pages (chrome://, edge://, etc.)');
+    return;
+  }
 
   chrome.scripting.executeScript({
     target: {tabId: tab.id},
@@ -96,6 +158,11 @@ document.querySelector('[data-action="color-picker"]').addEventListener('click',
 // Regex Tester
 document.querySelector('[data-action="regex-tester"]').addEventListener('click', async () => {
   const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+
+  if (isRestrictedUrl(tab.url)) {
+    alert('Cannot access system pages (chrome://, edge://, etc.)');
+    return;
+  }
 
   chrome.scripting.executeScript({
     target: {tabId: tab.id},
@@ -149,6 +216,11 @@ document.querySelector('[data-action="screenshot"]').addEventListener('click', a
 document.querySelector('[data-action="console"]').addEventListener('click', async () => {
   const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
 
+  if (isRestrictedUrl(tab.url)) {
+    alert('Cannot access system pages (chrome://, edge://, etc.)');
+    return;
+  }
+
   const code = prompt('Enter JavaScript code:');
   if (!code) return;
 
@@ -185,6 +257,11 @@ document.getElementById('clear-cookies').addEventListener('click', async () => {
 // Clear Storage
 document.getElementById('clear-storage').addEventListener('click', async () => {
   const [tab] = await chrome.tabs.query({active: true, currentWindow: true});
+
+  if (isRestrictedUrl(tab.url)) {
+    alert('Cannot access system pages (chrome://, edge://, etc.)');
+    return;
+  }
 
   chrome.scripting.executeScript({
     target: {tabId: tab.id},
