@@ -210,8 +210,9 @@
         </div>
 
         <div class="btn-group">
-            <button class="btn" onclick="loadLogo()" id="loadBtn">
-                🔄 Logo.png Yükle
+            <input type="file" id="fileInput" accept="image/png,image/jpeg,image/jpg" style="display: none;" onchange="handleFileSelect(event)">
+            <button class="btn" onclick="document.getElementById('fileInput').click()" id="loadBtn">
+                📁 Logo.png Dosyasını Seç
             </button>
             <button class="btn" onclick="downloadAll()" disabled id="downloadAllBtn" style="background: #00ffff;">
                 📦 Tümünü İndir
@@ -221,7 +222,8 @@
         <div class="instructions">
             <h3>📖 Kullanım</h3>
             <ol>
-                <li><strong>"Logo.png Yükle"</strong> butonuna tıklayın</li>
+                <li><strong>"Logo.png Dosyasını Seç"</strong> butonuna tıklayın</li>
+                <li>Proje klasöründeki <code>logo.png</code> dosyasını seçin</li>
                 <li>Logo otomatik olarak 3 farklı boyutta oluşturulacak</li>
                 <li><strong>"Tümünü İndir"</strong> veya tek tek indirin</li>
                 <li>İndirilen dosyaları <code>icons/</code> klasörüne koyun:
@@ -245,30 +247,50 @@
             statusEl.className = `status ${type}`;
         }
 
-        function loadLogo() {
-            showStatus('Logo yükleniyor...', 'success');
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
 
-            const img = new Image();
-            img.crossOrigin = 'anonymous';
+            if (!file) {
+                showStatus('❌ Dosya seçilmedi!', 'error');
+                return;
+            }
 
-            img.onload = function() {
-                originalImage = img;
-                resizeAllSizes();
-                showStatus('✅ Logo başarıyla yüklendi ve boyutlandırıldı!', 'success');
+            if (!file.type.startsWith('image/')) {
+                showStatus('❌ Lütfen bir resim dosyası seçin!', 'error');
+                return;
+            }
 
-                // Enable buttons
-                document.getElementById('btn16').disabled = false;
-                document.getElementById('btn48').disabled = false;
-                document.getElementById('btn128').disabled = false;
-                document.getElementById('downloadAllBtn').disabled = false;
+            showStatus('📁 Dosya yükleniyor...', 'success');
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                const img = new Image();
+
+                img.onload = function() {
+                    originalImage = img;
+                    resizeAllSizes();
+                    showStatus(`✅ ${file.name} başarıyla yüklendi ve boyutlandırıldı!`, 'success');
+
+                    // Enable buttons
+                    document.getElementById('btn16').disabled = false;
+                    document.getElementById('btn48').disabled = false;
+                    document.getElementById('btn128').disabled = false;
+                    document.getElementById('downloadAllBtn').disabled = false;
+                };
+
+                img.onerror = function() {
+                    showStatus('❌ Resim yüklenemedi!', 'error');
+                };
+
+                img.src = e.target.result;
             };
 
-            img.onerror = function() {
-                showStatus('❌ Logo yüklenemedi! logo.png dosyasının proje klasöründe olduğundan emin olun.', 'error');
+            reader.onerror = function() {
+                showStatus('❌ Dosya okunamadı!', 'error');
             };
 
-            // Load the logo.png from the same directory
-            img.src = '../logo.png';
+            reader.readAsDataURL(file);
         }
 
         function resizeAllSizes() {
@@ -314,14 +336,12 @@
             });
         }
 
-        // Auto-load on page load
+        // Ready message
         window.addEventListener('load', function() {
-            // Automatically try to load logo after a short delay
-            setTimeout(loadLogo, 500);
+            console.log('%c🦅 H4WK Logo Resizer', 'color: #00ffaa; font-size: 20px; font-weight: bold;');
+            console.log('%cSeçin logo.png dosyanızı!', 'color: #00ffff; font-size: 14px;');
+            showStatus('📁 "Logo.png Dosyasını Seç" butonuna tıklayın', 'success');
         });
-
-        console.log('%c🦅 H4WK Logo Resizer', 'color: #00ffaa; font-size: 20px; font-weight: bold;');
-        console.log('%cReady to resize your logo!', 'color: #00ffff; font-size: 14px;');
     </script>
 </body>
 </html>
